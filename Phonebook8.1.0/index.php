@@ -1,3 +1,15 @@
+<?php 
+session_start();  
+$LogButton = "";
+$Phonebook = "";
+if (isset($_SESSION["user"])){
+    $LogButton = "<li><a class='getstarted scrollto' href='logOutModule.php'>LogOut</a></li>";
+    $Phonebook = "<li><a class='nav-link scrollto' href='#phonebook.php'>Phonebook</a></li>";
+}else{
+    $LogButton = "<li><a class='getstarted scrollto' href='login.php'>LogIn</a></li>";
+    $Phonebook = "<li><a class='nav-link scrollto' href='login.php'>Phonebook</a></li>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,8 +64,9 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="#phonebook">Phonebook</a></li>
-          <li><a class="getstarted scrollto" href="login.php">LogIn</a></li>
+
+          <?php echo $Phonebook; ?>
+          <?php echo $LogButton; ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
