@@ -219,6 +219,7 @@ function fetchContacts() {
         const contacts = JSON.parse(xhr.responseText);
         const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name)); // Sort the contacts array by name
         populatePhonebook(sortedContacts);
+        console.log(sortedContacts);
       } else {
         console.error('Request failed');
       }
@@ -268,10 +269,13 @@ function populatePhonebook(contacts) {
     const nameCell = document.createElement('td');
     const clickableName = document.createElement('span');
     clickableName.classList.add('clickable');
-    clickableName.textContent = contact.name +" "+  contact.contactmname +" "+ contact.contactlname;
+    clickableName.textContent = 
+      JSON.stringify(contact.name).replaceAll('"','').charAt(0).toUpperCase() + contact.name.slice(1)+" "+  
+      JSON.stringify(contact.middleName).replaceAll('"','').charAt(0).toUpperCase()+". "+ 
+      JSON.stringify(contact.lastName).replaceAll('"','').charAt(0).toUpperCase() + contact.lastName.slice(1);
     clickableName.addEventListener('click', () => {
       showPopup(contact);
-    });
+    }); 
     nameCell.appendChild(clickableName);
     row.appendChild(nameCell);
 
@@ -297,8 +301,8 @@ updateButton.innerHTML = 'Update';
 updateButton.classList.add('updateButton');
 updateButton.dataset.contactId = contact.id;
 updateButton.dataset.contactName = contact.name;
-updateButton.dataset.contactmname = contact.mname;
-updateButton.dataset.contactlname = contact.lname;
+updateButton.dataset.contactmname = contact.middleName;
+updateButton.dataset.contactlname = contact.lastName;
 updateButton.dataset.contactNumber = contact.number; // Add this line
 updateButton.dataset.contactEmail = contact.email; // Add this line
 updateButton.dataset.contactAddress = contact.address; // Add this line
