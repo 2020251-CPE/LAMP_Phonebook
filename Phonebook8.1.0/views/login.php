@@ -1,15 +1,12 @@
 <?php
     session_start();
-    if (isset($_SESSION["user"])){
-    header("Location: welcome.php");
-    exit();
-    }
+    $errorMessage="";
     
     if(isset($_POST["login"])){
         $email = $_POST["email"];
         $password = $_POST["password"];
-        require_once "DB_connection.php";
-        $sql = "SELECT * FROM Account WHERE email = '$email'";
+        require_once $_SERVER['DOCUMENT_ROOT']."/api/DB_connection.php";
+        $sql = "SELECT * FROM accounts WHERE email = '$email'";
         $result = mysqli_query($con, $sql);
         $user = mysqli_fetch_array($result,MYSQLI_ASSOC);
         if($user){
@@ -18,7 +15,7 @@
                     session_start();
                 }
                 $_SESSION["user"] = $email;
-                header("Location: welcome.php");
+                header("Location: /");
                 exit();
             }else{
             $errorMessage = "Password does not Match";
@@ -88,20 +85,19 @@
   </style>
 </head>
 <body>
-    <!-- ======= Hero Section ======= -->
   <section id="hero" class="align-items-center">
     <div class="container">
-        <form action="index.php" method="POST">
+        <form action="/login" method="POST">
           <h3>Login</h3>
           <label for="username">Email:</label>
           <input type="text" id="email" name="email" placeholder="Input Email here" required>
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" placeholder="Input password here" required>
-          <input type="submit" value="Login"><br>
-          <a href="">Don't have an Account yet? Sign In!</a>
+          <input type="submit" value="Login" name="login"><br>
+          <p><?php echo $errorMessage; ?></p>
         </form>
         <br>
     </div>
-  </section><!-- End Hero -->
+  </section>
 </body>
 </html>
