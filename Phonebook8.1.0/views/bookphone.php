@@ -1,6 +1,8 @@
 <?php
-//include auth_session.php file on all user panel pages
-//include("auth_session.php");
+session_start();  
+if (!isset($_SESSION["user"])){
+    header("Location: /");
+}
 ?>
 
 <!DOCTYPE html>
@@ -275,7 +277,7 @@ function populatePhonebook(contacts) {
       JSON.stringify(contact.lastName).replaceAll('"','').charAt(0).toUpperCase() + contact.lastName.slice(1);
     clickableName.addEventListener('click', () => {
       showPopup(contact);
-    }); 
+    });
     nameCell.appendChild(clickableName);
     row.appendChild(nameCell);
 
