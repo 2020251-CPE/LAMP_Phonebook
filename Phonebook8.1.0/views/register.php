@@ -97,6 +97,7 @@
           <input type="submit" value="Register" name="Register"><br>
           <p><?php echo $errorMessage; ?></p>
         </form>
+        <a href="/register">Already have an Account? Log In Here</a><br>
         <br>
     </div>
   </section>
