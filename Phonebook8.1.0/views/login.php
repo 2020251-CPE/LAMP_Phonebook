@@ -1,29 +1,34 @@
 <?php
-    session_start();
-    $errorMessage="";
+  session_start();
+  $errorMessage="";
     
-    if(isset($_POST["login"])){
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        require_once $_SERVER['DOCUMENT_ROOT']."/api/DB_connection.php";
-        $sql = "SELECT * FROM accounts WHERE email = '$email'";
-        $result = mysqli_query($con, $sql);
-        $user = mysqli_fetch_array($result,MYSQLI_ASSOC);
-        if($user){
-            if(strcmp($password,$user["password"])){
-                if (!isset($_SESSION)){
-                    session_start();
-                }
-                $_SESSION["user"] = $email;
-                header("Location: /");
-                exit();
-            }else{
-            $errorMessage = "Password does not Match";
-            }
+  if(isset($_POST["login"])){
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    if (empty($name) || empty($password) || empty($email)) {
+      $errorMessage= "Please fill in all fields.";
+    } else {
+      require_once $_SERVER['DOCUMENT_ROOT']."/api/DB_connection.php";
+      $sql = "SELECT * FROM accounts WHERE email = '$email'";
+      $result = mysqli_query($con, $sql);
+      $user = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      if($user){
+        if(strcmp($password,$user["password"])){
+          if (!isset($_SESSION)){
+            session_start();
+          }
+          $_SESSION["user"] = $email;
+          header("Location: /");
+          exit();
         }else{
-         $errorMessage = "Email does not Match";
+          $errorMessage = "Password does not Match";
         }
-    }
+      }else{
+        $errorMessage = "Email does not Match";
+      }
+    } 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
