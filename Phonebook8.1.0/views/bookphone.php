@@ -169,7 +169,7 @@ table tr:nth-child(even) {
   
 <div class="popup" id="updatePopup">
   <h2>Update Contact</h2>
-  <form id="updateForm" action="update_contact.php" method="POST">
+  <form id="updateForm" action="api/update_contact.php" method="POST">
     <input type="hidden" name="id" id="updateId">
     <label for="updateName">First Name:</label>
     <input type="text" id="updateName" name="name" required>
@@ -214,7 +214,7 @@ table tr:nth-child(even) {
 // Function to fetch contacts from the database, sort them by name, and populate the phonebook table
 function fetchContacts() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'fetch_contacts.php', true);
+  xhr.open('GET', 'api/fetch_contacts.php', true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
@@ -401,7 +401,7 @@ document.querySelector('.overlay').addEventListener('click', closeUpdatePopup);
   // Function to delete a contact from the database
   function deleteContact(id) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'delete_contact.php', true);
+    xhr.open('POST', 'api/delete_contact.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -473,7 +473,7 @@ document.querySelector('.overlay').addEventListener('click', closeUpdatePopup);
 
     // Send data to the server using AJAX
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'save_contact.php', true);
+    xhr.open('POST', 'api/save_contact.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
