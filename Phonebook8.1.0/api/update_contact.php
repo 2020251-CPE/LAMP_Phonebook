@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result) {
         // Update successful
-        header("Location: phonebook.php");
+        header("Location: /phonebook");
         
         exit();
     } else {
