@@ -2,12 +2,14 @@
 session_start();  
 $LogButton = "";
 $Phonebook = "";
+$registerButton = "";
 if (isset($_SESSION["user"])){
     $LogButton = "<li><a class='getstarted scrollto' href='api/logOutModule.php'>LogOut</a></li>";
     $Phonebook = "<li><a class='nav-link scrollto' href='/phonebook'>Phonebook</a></li>";
 }else{
     $LogButton = "<li><a class='getstarted scrollto' href='/login'>LogIn</a></li>";
     $Phonebook = "<li><a class='nav-link scrollto' href='/login'>Phonebook</a></li>";
+    $registerButton = "<li><a class='getstarted scrollto' href='/register'>Register</a></li>";
 }
 ?>
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ if (isset($_SESSION["user"])){
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Arsha Bootstrap Template - Index</title>
+  <title>ANGEL0 Phonebook</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -67,6 +69,7 @@ if (isset($_SESSION["user"])){
 
           <?php echo $Phonebook; ?>
           <?php echo $LogButton; ?>
+          <?php echo $registerButton; ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -155,7 +158,7 @@ if (isset($_SESSION["user"])){
             <p>
               Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
               velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
+              culpa qui officia deserunt mollit anim id est laborum. <strong>Don't Notice the sponsors in my page, they are not real</strong>
             </p>
             <a href="#" class="btn-learn-more">Learn More</a>
           </div>
@@ -170,7 +173,7 @@ if (isset($_SESSION["user"])){
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>I will reply as soon as possible!</p>
         </div>
 
         <div class="row">
@@ -180,7 +183,7 @@ if (isset($_SESSION["user"])){
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Purok 7, San Sebastian, Mataas na Kahoy, Batangas</p>
               </div>
 
               <div class="email">
@@ -197,7 +200,7 @@ if (isset($_SESSION["user"])){
 
 
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+              <div class="mapouter"><div class="gmap_canvas"><iframe width="375" height="260" id="gmap_canvas" src="https://maps.google.com/maps?q=San Sebastian, Mataas na Kahoy&t=&z=16&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2yu.co">2yu</a><br><style>.mapouter{position:relative;text-align:right;height:260px;width:375px;}</style><a href="https://embedgooglemap.2yu.co">html embed google map</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:260px;width:375px;}</style></div></div>
             </div>
 
           </div>
