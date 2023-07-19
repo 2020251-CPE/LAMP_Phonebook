@@ -1,8 +1,15 @@
 <?php
+session_start();
 require_once 'DB_connection.php';
 
 // Fetch contacts from the database
-$sql = "SELECT * FROM phonebook;";
+$sql = "SELECT phonebook.id, phonebook.name, phonebook.middleName, phonebook.lastName, 
+	phonebook.number, phonebook.email, phonebook.address, 
+	phonebook.notes, accounts.email
+FROM phonebook
+INNER JOIN accounts ON phonebook.ownerID=accounts.id
+WHERE accounts.email = '".$_SESSION["user"]."';
+";
 $result = mysqli_query($con, $sql);
 $contacts = array();
 while ($row = mysqli_fetch_assoc($result)) {
