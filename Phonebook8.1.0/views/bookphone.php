@@ -423,7 +423,10 @@ document.querySelector('.overlay').addEventListener('click', closeUpdatePopup);
 
   // Function to show the popup with contact details
   function showPopup(contact) {
-    popupName.textContent = contact.name;
+    popupName.textContent = 
+      JSON.stringify(contact.name).replaceAll('"','').charAt(0).toUpperCase() + contact.name.slice(1)+" "+  
+      JSON.stringify(contact.middleName).replaceAll('"','').charAt(0).toUpperCase()+". "+ 
+      JSON.stringify(contact.lastName).replaceAll('"','').charAt(0).toUpperCase() + contact.lastName.slice(1);
     popupNumber.textContent = 'Number: ' + contact.number;
     popupEmail.textContent = 'Email: ' + contact.email;
     popupAddress.textContent = 'Address: ' + contact.address;
