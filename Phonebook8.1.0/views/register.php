@@ -11,7 +11,7 @@
         $errorMessage= "Please fill in all fields.";
         } else {
             require_once $_SERVER['DOCUMENT_ROOT']."/api/DB_connection.php";
-            $sql = "INSERT INTO `accounts` (`name`, `email`, `password`) VALUES ('$name', '$email', ' $password');";
+            $sql = "INSERT INTO `accounts` (`name`, `userEmail`, `password`) VALUES ('$name', '$email', ' $password');";
             $result = mysqli_query($con, $sql);
         
             if ($result) {
@@ -27,7 +27,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Arsha Bootstrap Template - Index</title><!-- Favicons -->
+    <title>ANGEL0 Phonebook</title><!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -97,7 +97,7 @@
           <input type="submit" value="Register" name="Register"><br>
           <p><?php echo $errorMessage; ?></p>
         </form>
-        <a href="/register">Already have an Account? Log In Here</a><br>
+        <a href="/login">Already have an Account? Log In Here</a><br>
         <br>
     </div>
   </section>

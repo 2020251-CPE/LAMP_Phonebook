@@ -6,7 +6,7 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
         require_once $_SERVER['DOCUMENT_ROOT']."/api/DB_connection.php";
-        $sql = "SELECT * FROM accounts WHERE email = '$email'";
+        $sql = "SELECT * FROM accounts WHERE userEmail = '$email'";
         $result = mysqli_query($con, $sql);
         $user = mysqli_fetch_array($result,MYSQLI_ASSOC);
         if($user){
@@ -28,7 +28,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Arsha Bootstrap Template - Index</title><!-- Favicons -->
+    <title>ANGEL0 Phonebook</title><!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
